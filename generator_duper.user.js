@@ -4,7 +4,7 @@
 // @version      0.2
 // @description  normalnie se szukasz laseczek na fb grupkach xD
 // @author       jodua
-// @include      https://www.facebook.com/*
+// @include      https://www.facebook.com/groups/*/members/
 // @grant        none
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js
 // ==/UserScript==
@@ -62,11 +62,11 @@ function startScript(){
 }
 
 function buildResultsBox(){
-    $(".pam._grm.uiBoxWhite.noborder").append( "<strong>MOCNE LASECZKI XD</strong><br>" );
+    $(".pam._grm.uiBoxWhite.noborder").append( "<strong>Lista duperek</strong><br>" );
 }
 
 function buildButton(){
-    $("._4adk").append( "<button id='twoja_stara' class='_42ft _4jy0 _p _4jy4 _517h _51sy' style='background-color:#f44336;color:white;'>LASECZKI</button>" );
+    $("._4adk").append( "<button id='twoja_stara' class='_42ft _4jy0 _p _4jy4 _517h _51sy' style='background-color:#f44336;color:#fff;'>LASECZKI</button>" );
 }
 
 (function() {
