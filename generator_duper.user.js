@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         szukanie laseczek na grupkach xD
+// @name         generator_duper
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  normalnie se szukasz laseczek na fb grupkach xD
 // @author       jodua
 // @include      https://www.facebook.com/*
@@ -19,7 +19,7 @@ function checkIfLastA(data){
         }
     }
 }
-//+ $( this ).children().attr( "href" )
+
 function listUsers() {
     var counter = 0;
     $('._60ri.fsl.fwb.fcb').each(function(i, obj) {
@@ -64,7 +64,6 @@ function startScript(){
 function buildResultsBox(){
     $(".pam._grm.uiBoxWhite.noborder").append( "<strong>MOCNE LASECZKI XD</strong><br>" );
 }
-
 
 function buildButton(){
     $("._4adk").append( "<button id='twoja_stara' class='_42ft _4jy0 _p _4jy4 _517h _51sy' style='background-color:#f44336;color:white;'>LASECZKI</button>" );
