@@ -10,4 +10,4 @@
 ## 0.1 (14 May 2018)
 
 #### Features
--can list duperkas in groups
+- can list duperkas in groups
