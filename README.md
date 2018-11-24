@@ -1,5 +1,4 @@
-Witam
-to jest prawdziwy generator duper a wlasciwie to przycisku do szukania duper
-akutalna wersja to 0.2  bo nie 0.1
+GENERATOR DUPER
 
-pozdro
+0.3 update - zmiana w elementach struktury facebooka wymusila niewielka zmiane kodu, dodano kilka wyjatkow na zjeby jakies XD, pozdro
+0.2 bo nie 0.1
