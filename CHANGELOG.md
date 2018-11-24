@@ -1,3 +1,8 @@
+## 0.3 (24 November 2018)
+
+#### Bugfixes
+- rewrited because new facebook structure
+
 ## 0.2 (14 May 2018)
 
 #### Features
