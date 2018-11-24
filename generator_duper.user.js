@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         generator_duper
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  normalnie se szukasz laseczek na fb grupkach xD
 // @author       jodua
 // @include      https://www.facebook.com/groups/*/members/
@@ -12,7 +12,7 @@
 function checkIfLastA(data){
     var firstWord = data.replace(/ .*/,'');
     var last = firstWord.slice(-1);
-    var gey = ["Kuba", "Łada"];
+    var gey = ["Kuba", "Łada", "Andrea", "Wawa"];
     if (last == "a"){
         if (!gey.includes(firstWord)){
             return true;
@@ -22,7 +22,7 @@ function checkIfLastA(data){
 
 function listUsers() {
     var counter = 0;
-    $('._60ri.fsl.fwb.fcb').each(function(i, obj) {
+    $('._60ri').each(function(i, obj) {
         var data = $( this ).text();
         if (checkIfLastA(data)==true) {
             counter+=1;
