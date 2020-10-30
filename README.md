@@ -1,4 +1,14 @@
-GENERATOR DUPER
+# Generator Duper
+Search through facebook groups to find girls
 
-0.3 update - zmiana w elementach struktury facebooka wymusila niewielka zmiane kodu, dodano kilka wyjatkow na zjeby jakies XD, pozdro
-0.2 bo nie 0.1
+## Todo
+- [ ] Start script when page is  loaded without jquery or setTimeout function **IMPORTANT!**
+
+
+## Instalation
+1.Install userscript manager
+2.Install [generator_duper.user.js](generator_duper.user.js)
+
+## Usage
+
+Proceed to members tab at facebook group and click red button labeled "LASECZKI". After script execution girls names and links to their facebook profile will be listed under "LISTA DUPEREK"

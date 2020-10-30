@@ -1,76 +1,121 @@
 // ==UserScript==
 // @name         generator_duper
-// @namespace    http://tampermonkey.net/
-// @version      0.3
-// @description  normalnie se szukasz laseczek na fb grupkach xD
+// @namespace    generator_duper
+// @version      1.0
+// @description  Search through facebook groups to find girls
 // @author       jodua
-// @include      https://www.facebook.com/groups/*/members/
+// @include      https://www.facebook.com/groups/*/members
 // @grant        none
-// @require      https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js
+// @run-at       document-idle
 // ==/UserScript==
 
-function checkIfLastA(data){
-    var firstWord = data.replace(/ .*/,'');
-    var last = firstWord.slice(-1);
-    var gey = ["Kuba", "Łada", "Andrea", "Wawa"];
-    if (last == "a"){
-        if (!gey.includes(firstWord)){
-            return true;
-        }
+function checkIfLastLetterEqualsA(data) {
+    let firstWord = data.replace(/ .*/, '');
+    let lastLetter = firstWord.slice(-1);
+    var gey = ["Kuba"];
+    if (lastLetter == "a" && !gey.includes(firstWord)) {
+        return true;
     }
 }
 
 function listUsers() {
-    var counter = 0;
-    $('._60ri').each(function(i, obj) {
-        var data = $( this ).text();
-        if (checkIfLastA(data)==true) {
-            counter+=1;
-            $(".pam._grm.uiBoxWhite.noborder").append( "<span>" + $( this ).text() + " </span><a href='"+$( this ).children().attr( "href" ).replace(/&.*/,'')+"' target=_blank>Profil</a><br>" );
+    let mainElementClass = document.getElementsByClassName('rq0escxv l9j0dhe7 du4w35lb j83agx80 cbu4d94t pfnyh3mw d2edcug0 aahdfvyu tvmbv18p');
+    let mainElement = mainElementClass[0];
+    let counter = 0;
+    let userList = document.getElementsByClassName('oajrlxb2 g5ia77u1 qu0x051f esr5mh6w e9989ue4 r7d6kgcz rq0escxv nhd2j8a9 nc684nl6 p7hjln8o kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x jb3vyjys rz4wbd8a qt6c0cv9 a8nywdso i1ao9s8h esuyzwwr f1sip0of lzcic4wl oo9gr5id gpro0wi8 lrazzd5p');
+    for (let user in userList) {
+        let userNumber = Number(user);
+        if (user != 0 && Number.isInteger(userNumber)) {
+            let userName = userList[user].innerText;
+            if (checkIfLastLetterEqualsA(userName)) {
+                counter++;
+                let node = document.createElement("a");
+                let textNode = document.createTextNode(userName);
+                node.target = "_blank";
+                node.href = userList[user].href.replace(/\/groups\/[^\/]*\/user/,"");
+                node.style.marginLeft = "10px";
+                node.style.fontSize = "15px";
+                node.appendChild(textNode);
+                mainElement.appendChild(node);
+                
+            }
         }
-    });
-    $("._grt._50f8").append( "<strong style='color:black'>, ILOSC DUPER: </strong><span style='color:red'>" + counter + "</span><br>" );
+    }
+    let node = document.createElement("span");
+    let textNode = document.createTextNode("Licznik duper: " + counter)
+    node.style.color = "red";
+    node.style.fontSize = "20px";
+    node.style.fontWeight = "bold";
+    node.style.textAlign = "center";
+    node.appendChild(textNode);
+    mainElement.appendChild(node);
     alert("Zakonczono szukanie duper");
 }
 
-function expandPage(){
-    if ($('.pam.uiBoxLightblue.uiMorePagerPrimary').length) {
-        $('.pam.uiBoxLightblue.uiMorePagerPrimary')[0].click();
-        setTimeout(function(){
+function removeClasses() {
+    let toBeRemoved = document.getElementsByClassName('rq0escxv l9j0dhe7 du4w35lb j83agx80 cbu4d94t ofv0k9yr cwj9ozl2');
+    for (let element in toBeRemoved) {
+        let elementNumber = Number(element);
+        if (elementNumber != 0 && Number.isInteger(elementNumber)){
+            let innerTextStart = toBeRemoved[elementNumber].innerText.slice(0,3);
+            if (innerTextStart!="New"){
+                toBeRemoved[elementNumber].remove();
+            }
+        }
+    }
+}
+
+function expandPage() {
+    let pageLoader = document.getElementsByClassName('a8nywdso sj5x9vvc rz4wbd8a cxgpxx05 g9en0fbe');
+    if (pageLoader.length == 1) {
+        window.scrollTo(0, document.body.scrollHeight);
+        setTimeout(() => {
             expandPage();
-        },250);
+        }, 500);
     }
-    else{
+    else {
         listUsers();
+        window.scrollTo(0, 0);
     }
 }
 
-function removeClasses(){
-    $('#groupsMemberSection_self_bio').remove();
-    $('#groupsMemberSection_admins_moderators').remove();
-    $('#groupsMemberSection_friends').remove();
-    $('#groupsMemberSection_things_in_common').remove();
-    $('#groupsMemberSection_page_members').remove();
+function buildButton() {
+    let navBarClass = document.getElementsByClassName('i09qtzwb rq0escxv n7fi1qx3 pmk7jnqg j9ispegn kr520xx4');
+    let navBar = navBarClass[navBarClass.length - 1];
+    let node = document.createElement("button");
+    let textNode = document.createTextNode("LASECZKI");
+    node.className = "bp9cbjyn rq0escxv j83agx80 pfnyh3mw frgo5egb l9j0dhe7 cb02d2ww hv4rvrfc dati1w0a";
+    node.id = "twoja_stara";
+    node.style.backgroundColor = "#f44336";
+    node.style.color = "#fff";
+    node.appendChild(textNode);
+    navBar.appendChild(node);
+
+
 }
 
-function startScript(){
+function buildResultBox() {
+    let mainElementClass = document.getElementsByClassName('rq0escxv l9j0dhe7 du4w35lb j83agx80 cbu4d94t pfnyh3mw d2edcug0 aahdfvyu tvmbv18p');
+    let mainElement = mainElementClass[0];
+    let node = document.createElement("span");
+    let textNode = document.createTextNode("LISTA DUPEREK");
+    node.style.fontSize = "20px";
+    node.style.fontWeight = "bold";
+    node.style.textAlign = "center";
+    node.appendChild(textNode);
+    mainElement.appendChild(node);
+
+}
+
+function startScript() {
     removeClasses();
-    setTimeout(function(){
-        expandPage();
-    },200);
-    buildResultsBox();
+    expandPage();
+    document.getElementById('twoja_stara').removeEventListener("click", startScript);
+    buildResultBox();
 }
 
-function buildResultsBox(){
-    $(".pam._grm.uiBoxWhite.noborder").append( "<strong>Lista duperek</strong><br>" );
-}
 
-function buildButton(){
-    $("._4adk").append( "<button id='twoja_stara' class='_42ft _4jy0 _p _4jy4 _517h _51sy' style='background-color:#f44336;color:#fff;'>LASECZKI</button>" );
-}
-
-(function() {
-    'use strict';
+setTimeout(() => {
     buildButton();
     document.getElementById('twoja_stara').addEventListener("click", startScript);
-})();
+}, 3000);
