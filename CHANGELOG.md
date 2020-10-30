@@ -1,4 +1,4 @@
-## 1.0 (30 October 2020)
+## 1.0.1 (30 October 2020)
 
 #### Bugfixes
 - Whole project has been rewritten due to new facebook layout

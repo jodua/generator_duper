@@ -118,4 +118,5 @@ function startScript() {
 setTimeout(() => {
     buildButton();
     document.getElementById('twoja_stara').addEventListener("click", startScript);
+    console.log("Script loaded");
 }, 3000);
