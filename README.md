@@ -6,9 +6,9 @@ Search through facebook groups to find girls
 
 
 ## Instalation
-1.Install userscript manager
+1.Install userscript manager  
 2.Install [generator_duper.user.js](generator_duper.user.js)
 
 ## Usage
 
-Proceed to members tab at facebook group and click red button labeled "LASECZKI". After script execution girls names and links to their facebook profile will be listed under "LISTA DUPEREK"
+Proceed to members tab at facebook group and click red button labeled "LASECZKI". After script execution girls names and links to their facebook profiles will be listed under "LISTA DUPEREK"
